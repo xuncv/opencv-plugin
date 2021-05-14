@@ -1,0 +1,75 @@
+name: Windows Server 2019
+
+on:
+  pull_request:
+    types: [synchronize, opened]
+  push:
+    branches:
+      - main
+
+env:
+  OPENCV_VERSION: 4.5.2
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          submodules: true
+
+#      - name: Cache restored NuGet packages
+#        uses: actions/cache@v2
+#        with:
+#          path: ${{ github.workspace }}/.nuget/packages
+#          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+#          restore-keys: |
+#            ${{ runner.os }}-nuget-
+
+      - name: Install Server-Media-Foundation
+        shell: powershell
+        run: |
+          Install-WindowsFeature Server-Media-Foundation
+
+      - name: Cache OpenCV binaries
+        id: cache_opencv
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/opencv_files
+          key: opencv-${{ env.OPENCV_VERSION }}-rev2
+
+      - name: Download OpenCV binaries 
+        if: steps.cache_opencv.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          . ".\download_opencv_windows.ps1"
+
+      - name: Cache Tesseract binaries
+        id: cache_tesseract
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/tesseract_files
+          key: tesseract-rev2
+
+      - name: Download Tesseract binaries 
+        if: steps.cache_tesseract.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          . ".\download_tesseract_windows.ps1"
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Build x86
+        shell: cmd
+        run: msbuild OpenCvSharpExtern.sln /t:build /p:configuration=Release /p:platform=x86 -maxcpucount
+
+      - name: Upload NuGet packages and Release packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: packages_windows
+          path: ${{ github.workspace }}\artifacts
