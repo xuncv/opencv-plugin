@@ -87,7 +87,7 @@ jobs:
           title: ${{ steps.tag.outputs.release_tag }}
           prerelease: false
           files: |
-            src\Release\Win32\OpenCvSharpExtern.dll
+            ${{ github.workspace }}/src/Release/Win32/*.dll
 
       # - name: Release packages
       #   uses: actions/upload-artifact@v2
