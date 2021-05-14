@@ -78,16 +78,24 @@ jobs:
         run: |
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
 
-      - name: Create GitHub release
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: ${{ steps.tag.outputs.release_tag }}
-          title: ${{ steps.tag.outputs.release_tag }}
-          prerelease: false
-          files: |
-            ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
+      # - name: Create GitHub release
+      #   uses: marvinpinto/action-automatic-releases@latest
+      #   with:
+      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #     automatic_release_tag: ${{ steps.tag.outputs.release_tag }}
+      #     title: ${{ steps.tag.outputs.release_tag }}
+      #     prerelease: false
+      #     files: |
+      #       ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
 
+       - name: Upload GitHub release
+          uses: softprops/action-gh-release@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            tag_name: ${{ steps.tag.outputs.release_tag }}
+            files: ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
+        
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
         with:
