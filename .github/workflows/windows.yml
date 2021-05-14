@@ -64,11 +64,15 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
 
+      - name: Mkdir for copy
+        shell: cmd
+        run: mkdir D:\workspace\github.com\aardio\opencv_aardio\lib\cv2\.res\
+
       - name: Build x86
         shell: cmd
         run: msbuild OpenCvSharpExtern.sln /t:build /p:configuration=Release /p:platform=x86 -maxcpucount
 
-      - name: Upload NuGet packages and Release packages
+      - name: Release packages
         uses: actions/upload-artifact@v2
         with:
           name: packages_windows
