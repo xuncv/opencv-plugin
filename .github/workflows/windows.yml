@@ -9,6 +9,7 @@ on:
 
 env:
   OPENCV_VERSION: 4.5.2
+  ReleaseVersion: 1
 
 jobs:
   build:
@@ -72,12 +73,21 @@ jobs:
         shell: cmd
         run: msbuild OpenCvSharpExtern.sln /t:build /p:configuration=Release /p:platform=x86 -maxcpucount
 
-      - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
+      - name: Generate release tag
+        id: tag
+        run: |
+          echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
+
+
+      - name: Create GitHub release
+        uses: marvinpinto/action-automatic-releases@latest
         with:
-          args: src\Release\Win32\OpenCvSharpExtern.dll
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${{ steps.tag.outputs.release_tag }}
+          title: ${{ steps.tag.outputs.release_tag }}
+          prerelease: false
+          files: |
+            src\Release\Win32\OpenCvSharpExtern.dll
 
       # - name: Release packages
       #   uses: actions/upload-artifact@v2
