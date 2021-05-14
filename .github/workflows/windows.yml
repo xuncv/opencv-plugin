@@ -88,13 +88,13 @@ jobs:
       #     files: |
       #       ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
 
-       - name: Upload GitHub release
-          uses: softprops/action-gh-release@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            tag_name: ${{ steps.tag.outputs.release_tag }}
-            files: ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
+      - name: Upload GitHub release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.tag.outputs.release_tag }}
+          files: ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
         
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
