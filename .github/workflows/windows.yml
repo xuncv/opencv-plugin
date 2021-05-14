@@ -78,7 +78,6 @@ jobs:
         run: |
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
 
-
       - name: Create GitHub release
         uses: marvinpinto/action-automatic-releases@latest
         with:
@@ -87,8 +86,21 @@ jobs:
           title: ${{ steps.tag.outputs.release_tag }}
           prerelease: false
           files: |
-            ${{ github.workspace }}/src/Release/Win32/*.dll
+            ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
 
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 3
+
+      - name: Remove old Releases
+        uses: dev-drprasad/delete-older-releases@v0.1.0
+        with:
+          keep_latest: 3
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Release packages
       #   uses: actions/upload-artifact@v2
       #   with:
