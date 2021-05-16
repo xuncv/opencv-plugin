@@ -16,10 +16,10 @@ CVAPI(ExceptionStatus) core_borderInterpolate(int p, int len, int borderType, in
 }
 
 CVAPI(ExceptionStatus) core_copyMakeBorder(
-    cv::_InputArray* src, cv::_OutputArray* dst, int top, int bottom, int left, int right, int borderType, MyCvScalar value)
+    cv::_InputArray* src, cv::_OutputArray* dst, int top, int bottom, int left, int right, int borderType, MyCvScalar *value)
 {
     BEGIN_WRAP
-    cv::copyMakeBorder(*src, *dst, top, bottom, left, right, borderType, cpp(value));
+    cv::copyMakeBorder(*src, *dst, top, bottom, left, right, borderType, cpp(*value));
     END_WRAP
 }
 

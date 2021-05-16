@@ -34,8 +34,10 @@ CVAPI(ExceptionStatus) imgproc_getGaborKernel(MyCvSize *ksize, double sigma, dou
 CVAPI(ExceptionStatus) imgproc_getStructuringElement(int shape, MyCvSize *ksize, MyCvPoint *anchor, cv::Mat **returnValue)
 {
     BEGIN_WRAP
+    //LOG("imgproc_getStructuringElement");
     const auto ret = cv::getStructuringElement(shape, cpp(*ksize), cpp(*anchor));
     *returnValue = new cv::Mat(ret);
+    //LOG("imgproc_getStructuringElement done");
     END_WRAP
 }
 
@@ -256,10 +258,10 @@ CVAPI(ExceptionStatus) imgproc_dilate(cv::_InputArray *src, cv::_OutputArray *ds
 }
 
 CVAPI(ExceptionStatus) imgproc_morphologyEx(cv::_InputArray *src, cv::_OutputArray *dst, int op, cv::_InputArray *kernel,
-                                 MyCvPoint anchor, int iterations, int borderType, MyCvScalar borderValue)
+                                 MyCvPoint *anchor, int iterations, int borderType, MyCvScalar *borderValue)
 {
     BEGIN_WRAP
-    cv::morphologyEx(*src, *dst, op, entity(kernel), cpp(anchor), iterations, borderType, cpp(borderValue));
+    cv::morphologyEx(*src, *dst, op, entity(kernel), cpp(*anchor), iterations, borderType, cpp(*borderValue));
     END_WRAP
 }
 
