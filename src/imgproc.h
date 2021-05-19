@@ -242,18 +242,18 @@ CVAPI(ExceptionStatus) imgproc_HoughCircles(cv::_InputArray *src, std::vector<cv
 
 
 CVAPI(ExceptionStatus) imgproc_erode(cv::_InputArray *src, cv::_OutputArray *dst, cv::_InputArray *kernel,
-                          MyCvPoint anchor, int iterations,    int borderType, MyCvScalar borderValue)
+                          MyCvPoint *anchor, int iterations,    int borderType, MyCvScalar *borderValue)
 {
     BEGIN_WRAP
-    cv::erode(*src, *dst, entity(kernel), cpp(anchor), iterations, borderType, cpp(borderValue));
+    cv::erode(*src, *dst, entity(kernel), cpp(*anchor), iterations, borderType, cpp(*borderValue));
     END_WRAP
 }
 
 CVAPI(ExceptionStatus) imgproc_dilate(cv::_InputArray *src, cv::_OutputArray *dst, cv::_InputArray *kernel,
-                           CvPoint anchor, int iterations, int borderType, CvScalar borderValue)
+    MyCvPoint* anchor, int iterations, int borderType, MyCvScalar*borderValue)
 {
     BEGIN_WRAP
-    cv::dilate(*src, *dst, entity(kernel), anchor, iterations, borderType, borderValue);
+    cv::dilate(*src, *dst, entity(kernel), cpp(*anchor), iterations, borderType, cpp(*borderValue));
     END_WRAP
 }
 
@@ -689,10 +689,10 @@ CVAPI(ExceptionStatus) imgproc_findContours1_vector(cv::_InputArray *image, std:
     END_WRAP
 }
 CVAPI(ExceptionStatus) imgproc_findContours1_OutputArray(cv::_InputArray *image, std::vector<cv::Mat> *contours,
-                                              cv::_OutputArray *hierarchy, int mode, int method, MyCvPoint offset)
+                                              cv::_OutputArray *hierarchy, int mode, int method, MyCvPoint *offset)
 {
     BEGIN_WRAP
-    cv::findContours(*image, *contours, *hierarchy, mode, method, cpp(offset));
+    cv::findContours(*image, *contours, *hierarchy, mode, method, cpp(*offset));
     END_WRAP
 }
 CVAPI(ExceptionStatus) imgproc_findContours2_vector(cv::_InputArray *image, std::vector<std::vector<cv::Point> > *contours,
@@ -703,10 +703,10 @@ CVAPI(ExceptionStatus) imgproc_findContours2_vector(cv::_InputArray *image, std:
     END_WRAP
 }
 CVAPI(ExceptionStatus) imgproc_findContours2_OutputArray(cv::_InputArray *image, std::vector<cv::Mat> *contours,
-                                              int mode, int method, MyCvPoint offset)
+                                              int mode, int method, MyCvPoint *offset)
 {
     BEGIN_WRAP
-    cv::findContours(*image, *contours, mode, method, cpp(offset));
+    cv::findContours(*image, *contours, mode, method, cpp(*offset));
     END_WRAP
 }
 
@@ -1330,15 +1330,15 @@ CVAPI(ExceptionStatus) imgproc_drawContours_vector(cv::_InputOutputArray *image,
 }
 CVAPI(ExceptionStatus) imgproc_drawContours_InputArray(cv::_InputOutputArray *image,
                                             cv::Mat **contours, int contoursLength,
-                                            int contourIdx, MyCvScalar color, int thickness, int lineType,
-                                            cv::_InputArray *hierarchy, int maxLevel, MyCvPoint offset)
+                                            int contourIdx, MyCvScalar *color, int thickness, int lineType,
+                                            cv::_InputArray *hierarchy, int maxLevel, MyCvPoint *offset)
 {
     BEGIN_WRAP
     std::vector<std::vector<cv::Point> > contoursVec(contoursLength);
     for (auto i = 0; i < contoursLength; i++)
         contoursVec[i] = *contours[i];
     cv::drawContours(
-        *image, contoursVec, contourIdx, cpp(color), thickness, lineType, entity(hierarchy), maxLevel, cpp(offset));
+        *image, contoursVec, contourIdx, cpp(*color), thickness, lineType, entity(hierarchy), maxLevel, cpp(*offset));
     END_WRAP
 }
 
