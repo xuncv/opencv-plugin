@@ -815,16 +815,16 @@ CVAPI(ExceptionStatus) imgproc_minAreaRect_Point2f(cv::Point2f *points, int poin
     END_WRAP
 }
 
-CVAPI(ExceptionStatus) imgproc_boxPoints_OutputArray(MyCvBox2D box, cv::_OutputArray* points)
+CVAPI(ExceptionStatus) imgproc_boxPoints_OutputArray(MyCvBox2D *box, cv::_OutputArray* points)
 {
     BEGIN_WRAP
-    cv::boxPoints(cpp(box), *points);
+    cv::boxPoints(cpp(*box), *points);
     END_WRAP
 }
-CVAPI(ExceptionStatus) imgproc_boxPoints_Point2f(MyCvBox2D box, cv::Point2f points[4])
+CVAPI(ExceptionStatus) imgproc_boxPoints_Point2f(MyCvBox2D *box, cv::Point2f points[4])
 {
     BEGIN_WRAP
-    cpp(box).points(points);
+    cpp(*box).points(points);
     END_WRAP
 }
 
