@@ -25,25 +25,6 @@
 #pragma warning(disable: 4996)
 #endif
 
-#include "minilogger.h"
-#include<iostream>
-#include<string>
-using namespace std;
-
-//#ifndef LOG
-//#define LOG(fmt, ...)	do{\
-//			char _buf[1024] = {0};\
-//			snprintf(_buf, sizeof(_buf), "[%s:%s:%d][LOG_NORMAL]"fmt"\n",__FILE__,__FUNCTION__,__LINE__, ##__VA_ARGS__);\
-//			mylog.Log(string(_buf));\
-//		}while(false)
-//#endif
-//
-//#ifndef LOGGER
-//#define LOGGER
-//Logger<TextDecorator> mylog("mylogfile.txt", "this is title!", true, true);//´´½¨logger
-//#endif // !LOGGER
-
-
 #define OPENCV_TRAITS_ENABLE_DEPRECATED
 
 #include <opencv2/opencv.hpp>

@@ -48,10 +48,10 @@ CVAPI(ExceptionStatus) core_Mat_new6(cv::Mat *mat, cv::Range *ranges, cv::Mat **
     *returnValue = new cv::Mat(*mat, ranges);
     END_WRAP
 }
-CVAPI(ExceptionStatus) core_Mat_new7(cv::Mat *mat, MyCvRect roi, cv::Mat **returnValue)
+CVAPI(ExceptionStatus) core_Mat_new7(cv::Mat *mat, MyCvRect *roi, cv::Mat **returnValue)
 {
     BEGIN_WRAP
-    *returnValue = new cv::Mat(*mat, cpp(roi));
+    *returnValue = new cv::Mat(*mat, cpp(*roi));
     END_WRAP
 }
 CVAPI(ExceptionStatus) core_Mat_new8(int rows, int cols, int type, void* data, size_t step, cv::Mat **returnValue)

@@ -97,6 +97,9 @@
     <ClCompile Include="xphoto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bgsegm.h">
@@ -367,6 +370,9 @@
       <Filter>Header Files\ximgproc</Filter>
     </ClInclude>
     <ClInclude Include="minilogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
