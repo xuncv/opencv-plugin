@@ -62,6 +62,9 @@
 #include <opencv2/text.hpp>
 #endif
 
+// 3rdparty
+#include <opencv2/wechat_qrcode.hpp>
+
 #include <vector>
 #include <algorithm>
 #include <iterator>
