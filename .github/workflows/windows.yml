@@ -94,7 +94,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
-          files: ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
+          files: |
+            ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
+            ${{ github.workspace }}\opencv_files\opencv452_win_x86\x86\vc16\bin\opencv_videoio_ffmpeg452.dll
         
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
