@@ -24,16 +24,16 @@ CVAPI(ExceptionStatus) core_Mat_new2(int rows, int cols, int type, cv::Mat **ret
     *returnValue = new cv::Mat(rows, cols, type); 
     END_WRAP
 }
-CVAPI(ExceptionStatus) core_Mat_new3(int rows, int cols, int type, MyCvScalar scalar, cv::Mat **returnValue)
+CVAPI(ExceptionStatus) core_Mat_new3(int rows, int cols, int type, MyCvScalar *scalar, cv::Mat **returnValue)
 {
     BEGIN_WRAP
-    *returnValue = new cv::Mat(rows, cols, type, cpp(scalar));
+    *returnValue = new cv::Mat(rows, cols, type, cpp(*scalar));
     END_WRAP
 }
-CVAPI(ExceptionStatus) core_Mat_new4(cv::Mat *mat, MyCvSlice rowRange, MyCvSlice colRange, cv::Mat **returnValue)
+CVAPI(ExceptionStatus) core_Mat_new4(cv::Mat *mat, MyCvSlice *rowRange, MyCvSlice *colRange, cv::Mat **returnValue)
 {
     BEGIN_WRAP
-    *returnValue = new cv::Mat(*mat, cpp(rowRange), cpp(colRange));
+    *returnValue = new cv::Mat(*mat, cpp(*rowRange), cpp(*colRange));
     END_WRAP
 }
 CVAPI(ExceptionStatus) core_Mat_new5(cv::Mat *mat, cv::Range rowRange, cv::Mat **returnValue)

@@ -124,15 +124,14 @@ CVAPI(ExceptionStatus) dnn_Net_forward3(
     BEGIN_WRAP
     std::vector<cv::Mat> outputBlobsVec;
     toVec(outputBlobs, outputBlobsLength, outputBlobsVec);
-
+    
     std::vector<cv::String> outBlobNamesVec(outBlobNamesLength);
     for (auto i = 0; i < outBlobNamesLength; i++)
     {
         outBlobNamesVec[i] = outBlobNames[i];
     }
-
     net->forward(outputBlobsVec, outBlobNamesVec);
-
+    
     for (auto i = 0; i < outputBlobsLength; i++)
     {
         *outputBlobs[i] = outputBlobsVec[i];

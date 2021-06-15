@@ -12,25 +12,12 @@ CVAPI(ExceptionStatus) wechat_qrcode_WeChatQRCode_new(const char* detector_proto
 	END_WRAP
 }
 
-CVAPI(ExceptionStatus)wechat_qrcode_WeChatQRCode_detectAndDecode(cv::wechat_qrcode::WeChatQRCode *obj, cv::_InputArray *img, std::vector<cv::Mat>* points, std::vector<std::string> **returnValue,size_t *retLen) {
+CVAPI(ExceptionStatus)wechat_qrcode_WeChatQRCode_detectAndDecode(cv::wechat_qrcode::WeChatQRCode *obj, cv::_InputArray *img, std::vector<cv::Mat>* points, std::vector<std::string> * lists) {
 	BEGIN_WRAP
-	const std::vector<std::string> lists = obj->detectAndDecode(*img, *points);
-	*returnValue = new std::vector<std::string>();
-	(*returnValue)->assign(lists.begin(), lists.end());
-	*retLen = lists.size();
-	END_WRAP
-}
-
-CVAPI(ExceptionStatus)wechat_qrcode_extractResult(std::vector<std::string>* vec, int index,char **returnValue) {
-	BEGIN_WRAP
-	std::string text = (vec)->at(index);
-	memcpy(returnValue, (void*)text.c_str(), text.length());
-	END_WRAP
-}
-
-CVAPI(ExceptionStatus)wechat_qrcode_deleteResult(std::vector<std::string>* vec) {
-	BEGIN_WRAP
-	delete vec;
+	const auto res = obj->detectAndDecode(*img, *points);
+	lists->clear();
+	lists->resize(res.size());
+	lists->assign(res.begin(), res.end());
 	END_WRAP
 }
 
