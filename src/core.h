@@ -396,10 +396,10 @@ CVAPI(ExceptionStatus) core_inRange_InputArray(
     END_WRAP
 }
 CVAPI(ExceptionStatus) core_inRange_Scalar(
-    cv::_InputArray *src, MyCvScalar lowerb, MyCvScalar upperb, cv::_OutputArray *dst)
+    cv::_InputArray *src, MyCvScalar *lowerb, MyCvScalar *upperb, cv::_OutputArray *dst)
 {
     BEGIN_WRAP
-    cv::inRange(*src, cpp(lowerb), cpp(upperb), *dst);
+    cv::inRange(*src, cpp(*lowerb), cpp(*upperb), *dst);
     END_WRAP
 }
 
