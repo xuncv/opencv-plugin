@@ -280,20 +280,20 @@ CVAPI(ExceptionStatus) imgproc_warpAffine(cv::_InputArray* src, cv::_OutputArray
     END_WRAP
 }
 
-CVAPI(ExceptionStatus) imgproc_warpPerspective_MisInputArray(cv::_InputArray* src, cv::_OutputArray* dst, cv::_InputArray* m, MyCvSize dsize,
-                                                             int flags, int borderMode, MyCvScalar borderValue)
+CVAPI(ExceptionStatus) imgproc_warpPerspective_MisInputArray(cv::_InputArray* src, cv::_OutputArray* dst, cv::_InputArray* m, MyCvSize *dsize,
+                                                             int flags, int borderMode, MyCvScalar *borderValue)
 {
     BEGIN_WRAP
-    cv::warpPerspective(*src, *dst, *m, cpp(dsize), flags, borderMode, cpp(borderValue));
+    cv::warpPerspective(*src, *dst, *m, cpp(*dsize), flags, borderMode, cpp(*borderValue));
     END_WRAP
 }
 
-CVAPI(ExceptionStatus) imgproc_warpPerspective_MisArray(cv::_InputArray* src, cv::_OutputArray* dst, float* m, int mRow, int mCol, MyCvSize dsize,
-                                                        int flags, int borderMode, MyCvScalar borderValue)
+CVAPI(ExceptionStatus) imgproc_warpPerspective_MisArray(cv::_InputArray* src, cv::_OutputArray* dst, float* m, int mRow, int mCol, MyCvSize *dsize,
+                                                        int flags, int borderMode, MyCvScalar *borderValue)
 {
     BEGIN_WRAP
     const cv::Mat mmat(mRow, mCol, CV_32FC1, m);
-    cv::warpPerspective(*src, *dst, mmat, cpp(dsize), flags, borderMode, cpp(borderValue));
+    cv::warpPerspective(*src, *dst, mmat, cpp(*dsize), flags, borderMode, cpp(*borderValue));
     END_WRAP
 }
 
