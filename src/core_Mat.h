@@ -341,10 +341,10 @@ CVAPI(ExceptionStatus) core_Mat_resize1(cv::Mat *obj, size_t sz)
     obj->resize(sz);
     END_WRAP
 }
-CVAPI(ExceptionStatus) core_Mat_resize2(cv::Mat *obj, size_t sz, MyCvScalar s)
+CVAPI(ExceptionStatus) core_Mat_resize2(cv::Mat *obj, size_t sz, MyCvScalar *s)
 {
     BEGIN_WRAP
-    obj->resize(sz, cpp(s));
+    obj->resize(sz, cpp(*s));
     END_WRAP
 }
 

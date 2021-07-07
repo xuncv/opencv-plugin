@@ -172,21 +172,21 @@ CVAPI(ExceptionStatus) videoio_VideoWriter_new1(cv::VideoWriter **returnValue)
 CVAPI(ExceptionStatus) videoio_VideoWriter_new2(
     const char *filename, 
     int fourcc, double fps,
-    MyCvSize frameSize, int isColor, 
+    MyCvSize *frameSize, int isColor, 
     cv::VideoWriter **returnValue)
 {
     BEGIN_WRAP
-    *returnValue = new cv::VideoWriter(filename, fourcc, fps, cpp(frameSize), isColor != 0);
+    *returnValue = new cv::VideoWriter(filename, fourcc, fps, cpp(*frameSize), isColor != 0);
     END_WRAP
 }
 CVAPI(ExceptionStatus) videoio_VideoWriter_new3(
     const char *filename, int apiPreference, 
     int fourcc, double fps,
-    MyCvSize frameSize, int isColor, 
+    MyCvSize *frameSize, int isColor, 
     cv::VideoWriter **returnValue)
 {
     BEGIN_WRAP
-    *returnValue = new cv::VideoWriter(filename, apiPreference, fourcc, fps, cpp(frameSize), isColor != 0);
+    *returnValue = new cv::VideoWriter(filename, apiPreference, fourcc, fps, cpp(*frameSize), isColor != 0);
     END_WRAP
 }
 
@@ -200,21 +200,21 @@ CVAPI(ExceptionStatus) videoio_VideoWriter_delete(cv::VideoWriter *obj)
 CVAPI(ExceptionStatus) videoio_VideoWriter_open1(
     cv::VideoWriter *obj, const char *filename, 
     int fourcc, double fps,
-    MyCvSize frameSize, int isColor, 
+    MyCvSize *frameSize, int isColor, 
     int *returnValue)
 {
     BEGIN_WRAP
-    *returnValue = obj->open(filename, fourcc, fps, cpp(frameSize), isColor != 0) ? 1 : 0;
+    *returnValue = obj->open(filename, fourcc, fps, cpp(*frameSize), isColor != 0) ? 1 : 0;
     END_WRAP
 }
 CVAPI(ExceptionStatus) videoio_VideoWriter_open2(
     cv::VideoWriter *obj, const char *filename, int apiPreference, 
     int fourcc, double fps,
-    MyCvSize frameSize, int isColor, 
+    MyCvSize *frameSize, int isColor, 
     int *returnValue)
 {
     BEGIN_WRAP
-    *returnValue = obj->open(filename, apiPreference, fourcc, fps, cpp(frameSize), isColor != 0) ? 1 : 0;
+    *returnValue = obj->open(filename, apiPreference, fourcc, fps, cpp(*frameSize), isColor != 0) ? 1 : 0;
     END_WRAP
 }
 

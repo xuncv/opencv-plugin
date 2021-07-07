@@ -272,11 +272,11 @@ CVAPI(ExceptionStatus) imgproc_resize(cv::_InputArray* src, cv::_OutputArray* ds
     END_WRAP
 }
 
-CVAPI(ExceptionStatus) imgproc_warpAffine(cv::_InputArray* src, cv::_OutputArray* dst, cv::_InputArray* M, MyCvSize dsize,
-                                          int flags, int borderMode, MyCvScalar borderValue)
+CVAPI(ExceptionStatus) imgproc_warpAffine(cv::_InputArray* src, cv::_OutputArray* dst, cv::_InputArray* M, MyCvSize *dsize,
+                                          int flags, int borderMode, MyCvScalar *borderValue)
 {
     BEGIN_WRAP
-    cv::warpAffine(*src, *dst, *M, cpp(dsize), flags, borderMode, cpp(borderValue));
+    cv::warpAffine(*src, *dst, *M, cpp(*dsize), flags, borderMode, cpp(*borderValue));
     END_WRAP
 }
 
@@ -313,10 +313,10 @@ CVAPI(ExceptionStatus) imgproc_convertMaps(cv::_InputArray* map1, cv::_InputArra
     END_WRAP
 }
 
-CVAPI(ExceptionStatus) imgproc_getRotationMatrix2D(MyCvPoint2D32f center, double angle, double scale, cv::Mat** returnValue)
+CVAPI(ExceptionStatus) imgproc_getRotationMatrix2D(MyCvPoint2D32f *center, double angle, double scale, cv::Mat** returnValue)
 {
     BEGIN_WRAP
-    const auto ret = cv::getRotationMatrix2D(cpp(center), angle, scale);
+    const auto ret = cv::getRotationMatrix2D(cpp(*center), angle, scale);
     *returnValue = new cv::Mat(ret);
     END_WRAP
 
