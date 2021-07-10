@@ -34,10 +34,8 @@ CVAPI(ExceptionStatus) imgproc_getGaborKernel(MyCvSize *ksize, double sigma, dou
 CVAPI(ExceptionStatus) imgproc_getStructuringElement(int shape, MyCvSize *ksize, MyCvPoint *anchor, cv::Mat **returnValue)
 {
     BEGIN_WRAP
-    //LOG("imgproc_getStructuringElement");
     const auto ret = cv::getStructuringElement(shape, cpp(*ksize), cpp(*anchor));
     *returnValue = new cv::Mat(ret);
-    //LOG("imgproc_getStructuringElement done");
     END_WRAP
 }
 

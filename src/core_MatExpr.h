@@ -1,7 +1,6 @@
 #pragma once
 
 #include "include_opencv.h"
-#include "log.h"
 #include <exception>
 
 // ReSharper disable IdentifierTypo

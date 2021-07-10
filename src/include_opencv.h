@@ -84,5 +84,3 @@
 
 // Additional functions
 #include "my_functions.h"
-
-#include "log.h"
