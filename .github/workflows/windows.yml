@@ -8,7 +8,7 @@ on:
       - main
 
 env:
-  OPENCV_VERSION: 4.5.2
+  OPENCV_VERSION: 4.5.3
   ReleaseVersion: 1
 
 jobs:
@@ -96,7 +96,7 @@ jobs:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: |
             ${{ github.workspace }}\src\Release\Win32\OpenCvSharpExtern.dll
-            ${{ github.workspace }}\opencv_files\opencv452_win_x86\x86\vc16\bin\opencv_videoio_ffmpeg452.dll
+            ${{ github.workspace }}\opencv_files\opencv453_win_x86\x86\vc16\bin\opencv_videoio_ffmpeg453.dll
         
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
