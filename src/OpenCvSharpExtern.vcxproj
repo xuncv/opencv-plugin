@@ -164,7 +164,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>IlmImf.lib;ippicvmt.lib;ippiw.lib;ittnotify.lib;libopenjp2.lib;libjpeg-turbo.lib;libpng.lib;libprotobuf.lib;libtiff.lib;libwebp.lib;opencv_aruco453.lib;opencv_bgsegm453.lib;opencv_bioinspired453.lib;opencv_calib3d453.lib;opencv_ccalib453.lib;opencv_core453.lib;opencv_dnn453.lib;opencv_dnn_superres453.lib;opencv_dnn_objdetect453.lib;opencv_dpm453.lib;opencv_face453.lib;opencv_features2d453.lib;opencv_flann453.lib;opencv_fuzzy453.lib;opencv_hfs453.lib;opencv_highgui453.lib;opencv_imgcodecs453.lib;opencv_imgproc453.lib;opencv_img_hash453.lib;opencv_line_descriptor453.lib;opencv_ml453.lib;opencv_objdetect453.lib;opencv_optflow453.lib;opencv_phase_unwrapping453.lib;opencv_photo453.lib;opencv_plot453.lib;opencv_quality453.lib;opencv_reg453.lib;opencv_rgbd453.lib;opencv_saliency453.lib;opencv_shape453.lib;opencv_stereo453.lib;opencv_stitching453.lib;opencv_structured_light453.lib;opencv_superres453.lib;opencv_surface_matching453.lib;opencv_text453.lib;opencv_tracking453.lib;opencv_video453.lib;opencv_videoio453.lib;opencv_videostab453.lib;opencv_xfeatures2d453.lib;opencv_ximgproc453.lib;opencv_xobjdetect453.lib;opencv_xphoto453.lib;opencv_wechat_qrcode453.lib;quirc.lib;zlib.lib;ws2_32.lib;tesseract41.lib;leptonica-1.80.0.lib;gif.lib;jpeg.lib;libpng16.lib;libwebpmux.lib;lzma.lib;tiff.lib;tiffxx.lib;turbojpeg.lib;webp.lib;webpdecoder.lib;webpdemux.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>IlmImf.lib;ippicvmt.lib;ippiw.lib;ittnotify.lib;libopenjp2.lib;libjpeg-turbo.lib;libpng.lib;libprotobuf.lib;libtiff.lib;libwebp.lib;opencv_aruco453.lib;opencv_bgsegm453.lib;opencv_bioinspired453.lib;opencv_calib3d453.lib;opencv_ccalib453.lib;opencv_core453.lib;opencv_dnn453.lib;opencv_dnn_superres453.lib;opencv_dnn_objdetect453.lib;opencv_dpm453.lib;opencv_face453.lib;opencv_features2d453.lib;opencv_flann453.lib;opencv_fuzzy453.lib;opencv_hfs453.lib;opencv_highgui453.lib;opencv_imgcodecs453.lib;opencv_imgproc453.lib;opencv_img_hash453.lib;opencv_line_descriptor453.lib;opencv_ml453.lib;opencv_objdetect453.lib;opencv_optflow453.lib;opencv_phase_unwrapping453.lib;opencv_photo453.lib;opencv_plot453.lib;opencv_quality453.lib;opencv_reg453.lib;opencv_rgbd453.lib;opencv_saliency453.lib;opencv_shape453.lib;opencv_stereo453.lib;opencv_stitching453.lib;opencv_structured_light453.lib;opencv_superres453.lib;opencv_surface_matching453.lib;opencv_text453.lib;opencv_tracking453.lib;opencv_video453.lib;opencv_videoio453.lib;opencv_videostab453.lib;opencv_xfeatures2d453.lib;opencv_ximgproc453.lib;opencv_xobjdetect453.lib;opencv_xphoto453.lib;opencv_wechat_qrcode453.lib;opencv_barcode453.lib;quirc.lib;zlib.lib;ws2_32.lib;tesseract41.lib;leptonica-1.80.0.lib;gif.lib;jpeg.lib;libpng16.lib;libwebpmux.lib;lzma.lib;tiff.lib;tiffxx.lib;turbojpeg.lib;webp.lib;webpdecoder.lib;webpdemux.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
@@ -224,6 +224,7 @@ copy "$(SolutionDir)opencv_files\opencv452_win_x64\x64\vc16\bin\opencv_videoio_f
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aruco.cpp" />
+    <ClCompile Include="barcode.cpp" />
     <ClCompile Include="bgsegm.cpp" />
     <ClCompile Include="calib3d.cpp" />
     <ClCompile Include="core.cpp" />
@@ -259,6 +260,7 @@ copy "$(SolutionDir)opencv_files\opencv452_win_x64\x64\vc16\bin\opencv_videoio_f
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aruco.h" />
+    <ClInclude Include="barcode.h" />
     <ClInclude Include="bgsegm.h" />
     <ClInclude Include="calib3d.h" />
     <ClInclude Include="calib3d_fisheye.h" />

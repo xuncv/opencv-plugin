@@ -100,6 +100,9 @@
     <ClCompile Include="wechat_qrcode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="barcode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bgsegm.h">
@@ -370,6 +373,9 @@
       <Filter>Header Files\ximgproc</Filter>
     </ClInclude>
     <ClInclude Include="wechat_qrcode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="barcode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

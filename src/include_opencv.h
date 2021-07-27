@@ -64,6 +64,7 @@
 
 // 3rdparty
 #include <opencv2/wechat_qrcode.hpp>
+#include <opencv2/barcode.hpp>
 
 #include <vector>
 #include <algorithm>
