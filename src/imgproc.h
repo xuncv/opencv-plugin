@@ -1287,20 +1287,20 @@ CVAPI(ExceptionStatus) imgproc_fillPoly_InputOutputArray(cv::_InputOutputArray *
 
 CVAPI(ExceptionStatus) imgproc_polylines_Mat(
     cv::Mat *img, const cv::Point **pts, const int *npts,
-    int ncontours, int isClosed, MyCvScalar color,
+    int ncontours, int isClosed, MyCvScalar *color,
     int thickness, int lineType, int shift)
 {
     BEGIN_WRAP
     cv::polylines(
-        *img, pts, npts, ncontours, isClosed != 0, cpp(color), thickness, lineType, shift);
+        *img, pts, npts, ncontours, isClosed != 0, cpp(*color), thickness, lineType, shift);
     END_WRAP
 }
 CVAPI(ExceptionStatus) imgproc_polylines_InputOutputArray(
-    cv::_InputOutputArray *img, cv::_InputArray *pts, int isClosed, MyCvScalar color,
+    cv::_InputOutputArray *img, cv::_InputArray *pts, int isClosed, MyCvScalar *color,
     int thickness, int lineType, int shift)
 {
     BEGIN_WRAP
-    cv::polylines(*img, *pts, isClosed != 0, cpp(color), thickness, lineType, shift);
+    cv::polylines(*img, *pts, isClosed != 0, cpp(*color), thickness, lineType, shift);
     END_WRAP
 }
 

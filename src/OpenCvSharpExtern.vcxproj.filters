@@ -103,6 +103,9 @@
     <ClCompile Include="barcode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="custom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bgsegm.h">
@@ -378,6 +381,9 @@
     <ClInclude Include="barcode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="custom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
@@ -443,5 +449,8 @@
     <Filter Include="Header Files\shape">
       <UniqueIdentifier>{b36ab73f-c7bb-491b-aedb-dc16a293c0b9}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

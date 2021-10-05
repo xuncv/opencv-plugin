@@ -229,6 +229,7 @@ copy "$(SolutionDir)opencv_files\opencv452_win_x64\x64\vc16\bin\opencv_videoio_f
     <ClCompile Include="calib3d.cpp" />
     <ClCompile Include="core.cpp" />
     <ClCompile Include="cuda.cpp" />
+    <ClCompile Include="custom.cpp" />
     <ClCompile Include="dnn.cpp" />
     <ClCompile Include="dnn_superres.cpp" />
     <ClCompile Include="face.cpp" />
@@ -275,6 +276,7 @@ copy "$(SolutionDir)opencv_files\opencv452_win_x64\x64\vc16\bin\opencv_videoio_f
     <ClInclude Include="core_PCA.h" />
     <ClInclude Include="core_SparseMat.h" />
     <ClInclude Include="core_UMat.h" />
+    <ClInclude Include="custom.h" />
     <ClInclude Include="dnn.h" />
     <ClInclude Include="dnn_Net.h" />
     <ClInclude Include="dnn_superres.h" />
@@ -350,6 +352,9 @@ copy "$(SolutionDir)opencv_files\opencv452_win_x64\x64\vc16\bin\opencv_videoio_f
     <ClInclude Include="ximgproc_StructuredEdgeDetection.h" />
     <ClInclude Include="ximgproc_SuperPixel.h" />
     <ClInclude Include="xphoto.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
