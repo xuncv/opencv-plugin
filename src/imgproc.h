@@ -680,10 +680,10 @@ CVAPI(ExceptionStatus) imgproc_connectedComponentsWithStats(cv::_InputArray *ima
 }
 
 CVAPI(ExceptionStatus) imgproc_findContours1_vector(cv::_InputArray *image, std::vector<std::vector<cv::Point> > *contours,
-                                         std::vector<cv::Vec4i> *hierarchy, int mode, int method, MyCvPoint offset)
+                                         std::vector<cv::Vec4i> *hierarchy, int mode, int method, MyCvPoint *offset)
 {
     BEGIN_WRAP
-    cv::findContours(*image, *contours, *hierarchy, mode, method, cpp(offset));
+    cv::findContours(*image, *contours, *hierarchy, mode, method, cpp(*offset));
     END_WRAP
 }
 CVAPI(ExceptionStatus) imgproc_findContours1_OutputArray(cv::_InputArray *image, std::vector<cv::Mat> *contours,
@@ -694,10 +694,10 @@ CVAPI(ExceptionStatus) imgproc_findContours1_OutputArray(cv::_InputArray *image,
     END_WRAP
 }
 CVAPI(ExceptionStatus) imgproc_findContours2_vector(cv::_InputArray *image, std::vector<std::vector<cv::Point> > *contours,
-                                         int mode, int method, MyCvPoint offset)
+                                         int mode, int method, MyCvPoint *offset)
 {
     BEGIN_WRAP
-    cv::findContours(*image, *contours, mode, method, cpp(offset));
+    cv::findContours(*image, *contours, mode, method, cpp(*offset));
     END_WRAP
 }
 CVAPI(ExceptionStatus) imgproc_findContours2_OutputArray(cv::_InputArray *image, std::vector<cv::Mat> *contours,
@@ -1306,8 +1306,8 @@ CVAPI(ExceptionStatus) imgproc_polylines_InputOutputArray(
 
 CVAPI(ExceptionStatus) imgproc_drawContours_vector(cv::_InputOutputArray *image,
                                         cv::Point **contours, int contoursSize1, int *contoursSize2,
-                                        int contourIdx, MyCvScalar color, int thickness, int lineType,
-                                        cv::Vec4i *hierarchy, int hiearchyLength, int maxLevel, MyCvPoint offset)
+                                        int contourIdx, MyCvScalar *color, int thickness, int lineType,
+                                        cv::Vec4i *hierarchy, int hiearchyLength, int maxLevel, MyCvPoint *offset)
 {
     BEGIN_WRAP
     std::vector<std::vector<cv::Point> > contoursVec;
@@ -1323,7 +1323,7 @@ CVAPI(ExceptionStatus) imgproc_drawContours_vector(cv::_InputOutputArray *image,
     }
 
     cv::drawContours(
-        *image, contoursVec, contourIdx, cpp(color), thickness, lineType, hierarchyVec, maxLevel, cpp(offset));
+        *image, contoursVec, contourIdx, cpp(*color), thickness, lineType, hierarchyVec, maxLevel, cpp(*offset));
     END_WRAP
 }
 CVAPI(ExceptionStatus) imgproc_drawContours_InputArray(cv::_InputOutputArray *image,

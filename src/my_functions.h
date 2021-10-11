@@ -7,7 +7,7 @@
 #endif
 
 #include <opencv2/opencv.hpp>
-
+#include "logger.h"
 
 #ifdef _WIN32
 #ifdef _DEBUG
@@ -171,12 +171,27 @@ template <typename T>
 static void copyFromVectorToArray(std::vector<std::vector<T> >* src, T** dst)
 {
     for (size_t i = 0; i < src->size(); ++i)
-    {
+    {   
         const auto& srcI = src->at(i);
         const auto dstI = dst[i];
         for (size_t j = 0; j < srcI.size(); ++j)
         {
             dstI[j] = srcI[j];
+        }
+    }
+}
+
+template <typename T>
+static void copyFromVectorToArray2(std::vector<std::vector<T> >* src, T* dst)
+{
+    size_t index = 0;
+    for (size_t i = 0; i < src->size(); ++i)
+    {
+        const auto& srcI = src->at(i);
+        for (size_t j = 0; j < srcI.size(); ++j)
+        {
+            dst[index] = srcI[j];
+            index++;
         }
     }
 }

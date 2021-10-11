@@ -120,7 +120,7 @@ void putTextZH(Mat dst, const char* str, Point org, Scalar color, int fontSize, 
         {
             for (int n = 0; n < dst.channels(); ++n) {
                 double vtxt = subStr[n] / 255.0;
-                int cvv = vtxt * color.val[n] + (1 - vtxt) * subImg[n];
+                int cvv = (int)(vtxt * color.val[n] + (1 - vtxt) * subImg[n]);
                 subImg[n] = cvv > 255 ? 255 : (cvv < 0 ? 0 : cvv);
             }
 
